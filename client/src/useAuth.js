@@ -19,7 +19,7 @@ useEffect(()=>{
         setExpiresIn(res.data.expiresIn)
 
         console.log(res.data)
-        window.history.pushState({}, null,'/')
+        window.history.pushState({}, null,'/dashboard')
     })
     .catch((err)=>{
         console.log(err) })

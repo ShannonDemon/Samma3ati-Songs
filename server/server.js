@@ -4,7 +4,13 @@ const bodyParser = require('body-parser')
 const SpotifyWebApi = require('spotify-web-api-node')
 
 const app = express()
+
+require('dotenv').config()
+require('../server/config/database')
+
 app.use(cors())
+app.use(express.json())
+
 app.use(bodyParser.json())
 
 
@@ -31,6 +37,9 @@ spotifyApi.refreshAccessToken().then(data => {
     res.sendStatus(400)
   })
 })
+
+app.use('/', require('../server/routes/users'))
+
 
 app.post('/login',(req,res)=>{
     const code = req.body.code
