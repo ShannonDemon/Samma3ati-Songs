@@ -7,9 +7,13 @@ const app = express()
 
 require('dotenv').config()
 require('../server/config/database')
-
+app.use((req, res, next) => {
+    console.log(req.body)
+    next()
+})
 app.use(cors())
-app.use(express.json())
+// app.use(bodyParser.urlencoded())
+// app.use(express.json())
 
 app.use(bodyParser.json())
 
@@ -38,7 +42,8 @@ spotifyApi.refreshAccessToken().then(data => {
   })
 })
 
-app.use('/', require('../server/routes/users'))
+app.use('/', require('./routes/users'))
+app.use('/', require('./routes/favorites'))
 
 
 app.post('/login',(req,res)=>{

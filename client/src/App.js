@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Signup from './components/user/Signup'
 import Signin from './components/user/Signin'
 import NavBar from './components/NavBar/NavBar';
+import Favorites from './components/Favorites/Favorites';
 
 
 
@@ -81,6 +82,7 @@ function App() {
         <Route path='*' element={<Dashboard code ={code} />} />
 
         <Route path="/signup" element={<Signup register={registerHandler}></Signup>}></Route>
+        <Route path='/favorite' element={<Favorites/>}></Route>
         <Route path="/signin" element={isAuth ? <Login></Login> : <Signin login={loginHandler}></Signin>}></Route>
         <Route path="/dashboard" element={code ? <Dashboard code ={code} /> : <Signup register={registerHandler} />}></Route>
       </Routes>

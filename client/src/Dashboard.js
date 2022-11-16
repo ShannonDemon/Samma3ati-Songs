@@ -4,6 +4,7 @@ import useAuth from './useAuth'
 import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
 import {Container, Form} from 'react-bootstrap'
+import axios from 'axios'
 const SpotifyWebApi = require('spotify-web-api-node')
 
 
@@ -21,6 +22,7 @@ function Dashboard({code}) {
   const [searchResults,setSearchResults] = useState([])
   const [playingTrack,setPlayingTrack] = useState()
 
+  const [songFav, setFav] = useState({})
 
   function chooseTrack(track){
     setPlayingTrack(track)
@@ -64,6 +66,25 @@ function Dashboard({code}) {
     return ()=> cancel = true
   },[search, accessToken])
 
+  const addToFav = (e) => {
+    e.preventDefault()
+    console.log(e.target.value)
+    const token = localStorage.getItem('token')
+    const songData = searchResults.filter(song => song.uri == e.target.value)
+    // debugger
+    fetch('http://localhost:3001/favorites', {
+    method: 'POST', 
+    headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(songData)
+}).then(res => console.log(res.json()))
+    // axios.post('http://localhost:3001/favorites', songData, {headers: { Authorization: token }}
+    // )
+    // .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
 
   return (
     <Container className='d-flex flex-column py-2' style={{height:"100vh"}} >
@@ -71,7 +92,10 @@ function Dashboard({code}) {
         value={search} onChange={e=>setSearch(e.target.value)}/>
         <div className='flex-grow-1 my-2' style={{overflowY:'auto'}}>Songs</div>
         {searchResults.map(track=>(
+        <>
             <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack}/>
+            <button onClick={addToFav} value={track.uri} >Add To Favorites</button>   
+        </>
         ))}
         <div>
         <Player

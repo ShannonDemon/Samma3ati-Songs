@@ -9,6 +9,7 @@ function NavBar(props) {
         <div>
           <ul className="navbar-ul">
           <li><Link to='/dashboard'>Dashboard</Link></li>
+          <li><Link to = '/favorite'>Favorites</Link></li>
           <li><Link to='/profile'>Profile</Link></li>
           <li><Link to="/logout" onClick={props.onLogoutHandler}>Logout</Link></li>
           {props.user ? "Welcome " + props.user.user.name : null}

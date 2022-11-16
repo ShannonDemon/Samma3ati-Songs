@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Favorite = require('./Favorite')
 
 const schema = mongoose.Schema
 
@@ -8,11 +9,11 @@ const UserModel = new schema({
     username: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    //Associate the tweet model
-    // tweets: [{
-    //     type: schema.Types.ObjectId,
-    //     ref: 'Tweet'
-    //     }]
+    // Associate the favorite model
+    favorite: [{
+        type: schema.Types.ObjectId,
+        ref: 'Favorite'
+        }]
 }, {
     timestamps: true
 })
