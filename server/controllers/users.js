@@ -25,7 +25,21 @@ async function createUser(req,res) {
 
 async function getAllUsers(req, res) {
     try {
-        const allUsers = await User.find().populate('tweets')
+        const allUsers = await User.find()
+        // .populate('favorite')
+        // User.findOne({email})
+        res.json(allUsers)
+    } catch (err) {
+        res.json(err)
+    }
+}
+
+async function fav_get(req, res) {
+    try {
+        console.log("fav")
+        const allUsers = await User.findById(req.params.id).populate('favorite')
+        // .populate('favorite')
+        // User.findOne({email})
         res.json(allUsers)
     } catch (err) {
         res.json(err)
@@ -79,5 +93,6 @@ const auth_sigin_post = async (req, res) =>{
 module.exports = {
     createUser,
     getAllUsers,
-    auth_sigin_post
+    auth_sigin_post,
+    fav_get
 }

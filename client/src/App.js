@@ -11,6 +11,7 @@ import Signup from './components/user/Signup'
 import Signin from './components/user/Signin'
 import NavBar from './components/NavBar/NavBar';
 import Favorites from './components/Favorites/Favorites';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 
 
@@ -83,6 +84,7 @@ function App() {
 
         <Route path="/signup" element={<Signup register={registerHandler}></Signup>}></Route>
         <Route path='/favorite' element={<Favorites/>}></Route>
+        <Route path='/profile' element={<ProfilePage />}></Route>
         <Route path="/signin" element={isAuth ? <Login></Login> : <Signin login={loginHandler}></Signin>}></Route>
         <Route path="/dashboard" element={code ? <Dashboard code ={code} /> : <Signup register={registerHandler} />}></Route>
       </Routes>
