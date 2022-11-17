@@ -33,6 +33,16 @@ async function getAllUsers(req, res) {
         res.json(err)
     }
 }
+async function getUser(req, res) {
+    try {
+        const user = await User.findById(req.params.userId)
+        // .populate('favorite')
+        // User.findOne({email})
+        res.json(user)
+    } catch (err) {
+        res.json(err)
+    }
+}
 
 async function fav_get(req, res) {
     try {
@@ -90,8 +100,20 @@ const auth_sigin_post = async (req, res) =>{
     }
 } 
 
+
+async function updateUser(req, res) {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body)
+        res.json(user)
+    } catch (err) {
+        res.json(err)
+    }
+} 
+
 module.exports = {
     createUser,
+    getUser,
+    updateUser, 
     getAllUsers,
     auth_sigin_post,
     fav_get

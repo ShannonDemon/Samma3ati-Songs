@@ -3,6 +3,7 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 
 function NavBar(props) {
+  console.log('nav props', props)
   return (
     <>
     {props.isAuth ? (

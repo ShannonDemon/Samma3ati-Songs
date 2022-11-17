@@ -74,6 +74,12 @@ function App() {
     setIsAuth(false);
     setUser(null);
   }
+
+  const updateUser = (user) => {
+    setUser(user)
+  }
+
+
   return (
     <>
     <Router>
@@ -84,7 +90,7 @@ function App() {
 
         <Route path="/signup" element={<Signup register={registerHandler}></Signup>}></Route>
         <Route path='/favorite' element={<Favorites/>}></Route>
-        <Route path='/profile' element={<ProfilePage />}></Route>
+        <Route path='/profile' element={<ProfilePage updateUser={updateUser} />}></Route>
         <Route path="/signin" element={isAuth ? <Login></Login> : <Signin login={loginHandler}></Signin>}></Route>
         <Route path="/dashboard" element={code ? <Dashboard code ={code} /> : <Signup register={registerHandler} />}></Route>
       </Routes>

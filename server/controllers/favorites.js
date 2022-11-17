@@ -22,6 +22,8 @@ try {
     await user.populate('favorite')
     res.json(user)
 
+    
+
 
 } catch(err) {
     console.log(err)
@@ -29,10 +31,18 @@ try {
     }
 }
 
-// function deleteFavorite {
-// await Favorite.findByIdAndDelete(...)
-// }
+async function deleteFavorites(req, res) {
+    try {
+        await Favorite.findByIdAndDelete(req.params._id)
+        res.json({message: 'Favorite Track deleted successfully!'})
+    } catch (err) {
+        res.json(err)
+    }
+}
+
+
 
 module.exports = {
-    addToFavorites
+    addToFavorites,
+    deleteFavorites
 }
