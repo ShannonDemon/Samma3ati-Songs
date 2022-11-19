@@ -9,10 +9,10 @@ function NavBar(props) {
     {props.isAuth ? (
         <div>
           <ul className="navbar-ul">
-          <li><Link to='/signin'>Dashboard</Link></li>
-          <li><Link to = '/favorite'>Favorites</Link></li>
-          <li><Link to='/profile'>Profile</Link></li>
-          <li><Link to="/logout" onClick={props.onLogoutHandler}>Logout</Link></li>
+          <li><Link to='/signin' className='text-info'>Dashboard</Link></li>
+          <li><Link to = '/favorite' className='text-info'>Favorites</Link></li>
+          <li><Link to='/profile' className='text-info'>Profile</Link></li>
+          <li><Link to="/logout" className='text-info' onClick={props.onLogoutHandler}>Logout</Link></li>
           {props.user ? "Welcome " + props.user.user.name : null}
           </ul>
         </div>
@@ -20,8 +20,8 @@ function NavBar(props) {
       <div>
       <ul className="navbar-ul">
       {/* <li><Link to='/home'>Home</Link></li> */}
-      <li><Link to="/signup">Signup</Link></li>
-      <li><Link to="/signin">Signin</Link></li>
+      <li><Link to="/signup" className='text-info'>Signup</Link></li>
+      <li><Link to="/signin" className='text-info'>Signin</Link></li>
       </ul>
     </div>
      )}

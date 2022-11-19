@@ -7,7 +7,6 @@ import {Container, Form} from 'react-bootstrap'
 import axios from 'axios'
 const SpotifyWebApi = require('spotify-web-api-node')
 
-
 const spotifyApi = new SpotifyWebApi({
     // redirectUri:"http://localhost:3000",
     clientId:"14734e301927401fb046756786c5af70",
@@ -94,7 +93,7 @@ function Dashboard({code}) {
         {searchResults.map(track=>(
         <>
             <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack}/>
-            <button onClick={addToFav} value={track.uri} >Add To Favorites</button>   
+            <button class="btn btn-light" onClick={addToFav} value={track.uri} >Add To Favorites</button>   
         </>
         ))}
         <div>

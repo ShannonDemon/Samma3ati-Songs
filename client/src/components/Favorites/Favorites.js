@@ -42,14 +42,21 @@ function Favorites() {
 
   return (
     <div>
-        <h2>Favorite tracks:</h2>
+        <h2 className='bg-dark text-white'>Favorite tracks:</h2>
           {fav.length ? fav.map(f => 
         <div key={f._id}>
-          {/* <Link to={`/detail/${user._id}`} >{user._id}</Link> */}
+          {/* <Link to={`/detail/${user._id}`} >{user._id}</Link>
           <p>Track: {f.title}</p>
           <p>Artist: {f.artist}</p> 
-          <p><img src={f.albumUrl}></img></p>
-          <button onClick={() => {deleteFavorite(f._id)}}>Delete</button>         
+          <p><img src={f.albumUrl}></img></p> */}
+          <div className="d-block p-2 bg-dark text-white border border-success border-left" style={{cursor:"pointer"}}>
+            <img className="rounded" src={f.albumUrl} style={{height:'64px', width:'64px'}}/>
+            <div className='ml-3'>
+            <div>{f.title}</div>
+            <div className='text-muted'>{f.artist}</div>
+        </div>
+        <button className="btn btn-light" onClick={() => {deleteFavorite(f._id)}}>Delete</button>         
+        </div>
         </div> 
       )
       : null}

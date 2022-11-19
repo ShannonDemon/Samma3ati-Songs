@@ -1,3 +1,6 @@
+body{
+  background-image: url(../public/project-background.png);
+}
 .App {
   text-align: center;
 }

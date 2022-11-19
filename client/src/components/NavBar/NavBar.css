@@ -1,10 +1,11 @@
 .navbar-ul {
-    background-color: skyblue;
+    background-color: rgba(171, 93, 34, 0.415);
     display: flex;
     height: 40px;
     justify-content: flex-end;
     align-items: center;
     margin: 0;
+    color: white;
 }
 
 .navbar-ul > li {

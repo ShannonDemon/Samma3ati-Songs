@@ -69,7 +69,9 @@ function ProfilePage(props) {
     return (
         <div className='profile-container'>
         <form onSubmit={handleSubmit}>
-          <label>Name</label><br></br>
+          {/* <label className='text-white'>Name</label> */}
+          <h3 className='text-white'>User Page:</h3>
+          <br></br>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" /><br></br>
           <input name="username" value={formData.username} onChange={handleChange} placeholder="Username" /><br></br>
           <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" /><br></br>
@@ -79,10 +81,9 @@ function ProfilePage(props) {
   
       {/* {usersList.length ? usersList.map(user =>  */}
         <div key={user._id}>
-          User Page
           {/* <Link to={`/detail/${user._id}`} >{user._id}</Link> */}
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
+          <p className='text-white'>Name: {user.name}</p>
+          <p className='text-white'>Email: {user.email}</p>
         </div>
       {/* ) */}
       {/* : null} */}

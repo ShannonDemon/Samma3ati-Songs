@@ -1,0 +1,7 @@
+ .d-flex.m-2.align-items-center {
+    justify-content: center;
+    }
+    button {
+    width: 190px;
+    align-self: center;
+ }
